@@ -69,7 +69,7 @@ def publish_Sensor_Values_to_MQTT():
         print ("Publishing Humidity Value: " + str(Humidity_Value) + "...")
         publish_To_Topic (MQTT_Topic_Humidity, humidity_json_data)
         toggle = 1
-    else
+    else:
         #temperature
         Temperature_Value = float("{0:.2f}".format(random.uniform(-5, 45)*getRandomNumber()))
         Temperature_Data = {}

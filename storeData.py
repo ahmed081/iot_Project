@@ -12,13 +12,11 @@ class Database_Manager():
         self.cur = self.conn.cursor() 
 
     def add_del_update_db_record(self, sql_query, args=()):
-        try:
-            self.cur.execute(sql_query, args)
-            print("insert .......................")
-        except Exception as err:
-            print('Query Failed: %s\nError: %s' % (query, str(err)))
-        finally:
-            return
+
+        self.cur.execute(sql_query, args)
+        print("insert .......................")
+        return
+        
 
     def select_db_record(self, sql_query, args=()):
         self.cur.execute(sql_query, args) 
@@ -96,6 +94,15 @@ def Humidity_Data_Handler(json_Data):
     del dbobj 
     print("Inserted Humidity Data into Database.") 
     print ("")
+
+
+def import_data_handler(table):
+    print("select data from ",table,"...............")
+    dbobj = Database_Manager()
+    data = dbobj.select_db_record("select * from "+table,[])
+    return data
+
+
 #Master function to select DB Function based on MQTT Topic
 def sensor_Data_Handler(Topic, json_Data):
     print("topickkkkk : "+Topic)

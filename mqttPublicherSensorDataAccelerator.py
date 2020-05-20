@@ -61,7 +61,6 @@ with keyboard.Listener(on_press = onPress) as listener:
     
     while break_Program == False:
         try:
-            
             message,address = s.recvfrom(8192)
             print("here")
             acceleration_Json_Data = mapMessageToJson(message,address)
