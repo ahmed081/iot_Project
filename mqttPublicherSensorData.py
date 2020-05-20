@@ -69,7 +69,7 @@ def publish_Sensor_Values_to_MQTT():
         print ("Publishing Humidity Value: " + str(Humidity_Value) + "...")
         publish_To_Topic (MQTT_Topic_Humidity, humidity_json_data)
         toggle = 1
-    elif toggle == 1:
+    else
         #temperature
         Temperature_Value = float("{0:.2f}".format(random.uniform(-5, 45)*getRandomNumber()))
         Temperature_Data = {}
@@ -80,22 +80,8 @@ def publish_Sensor_Values_to_MQTT():
         Temperature_json_data = json.dumps(Temperature_Data)
         print ("Publishing Temperature Value: " + str(Temperature_Value) + "...")
         publish_To_Topic (MQTT_Topic_Temperature.strip(), Temperature_json_data)
-        toggle = 2
-    elif toggle == 2:
-        #acceleration
-        Acceleration_Value_x = float("{0:.2f}".format(random.uniform(0, 1000)*getRandomNumber()))
-        Acceleration_Value_y = float("{0:.2f}".format(random.uniform(0, 1000)*getRandomNumber()))
-        Acceleration_Value_z = float("{0:.2f}".format(random.uniform(0, 1)*getRandomNumber()))
-        Acceleration_Data = {}
-        Acceleration_Data['sensor_ID'] = "acceleration-Sensor1"
-        Acceleration_Data['Date_Time'] = (datetime.today()).strftime("%d-%b-%Y %H:%M:%S:%f")
-        Acceleration_Data['accX'] = Acceleration_Value_x
-        Acceleration_Data['accY'] = Acceleration_Value_y
-        Acceleration_Data['accZ'] = Acceleration_Value_z
-        Acceleration_json_data = json.dumps(Acceleration_Data)
-        print ("Publishing accelaration values: X = " + str(Acceleration_Value_x) +"  Y = "+str(Acceleration_Value_y) +" Z = "+str(Acceleration_Value_z) + "...")
-        publish_To_Topic (MQTT_Topic_Acceleration.strip(), Acceleration_json_data)
         toggle = 0
+    
         
 # MQTT Settings
 MQTT_Broker = "mqtt.eclipse.org"
