@@ -43,13 +43,13 @@ def getRandomNumber():
     return (1-random.uniform(0, s_rm))**.5
 
 def publish_Sensor_Values_to_MQTT():
-    threading.Timer(2.0, publish_Sensor_Values_to_MQTT).start()
+    threading.Timer(5.0, publish_Sensor_Values_to_MQTT).start()
     global toggle
     if toggle == 0:
         Humidity_Value = float("{0:.2f}".format(random.uniform(10, 100)*getRandomNumber()))
         Humidity_Data = {}
         Humidity_Data['Sensor_ID'] = "Humidity-Sensor1"
-        Humidity_Data['Date'] = (datetime.today()).strftime("%d-%b-%Y %H:%M:%S:%f")
+        Humidity_Data['Date_Time'] = (datetime.today()).strftime("%d-%b-%Y %H:%M:%S:%f")
         Humidity_Data['Humidity'] = Humidity_Value
         Humidity_Data['HumidityLevel'] = getHumidityLevel(Humidity_Value)
         humidity_json_data = json.dumps(Humidity_Data)
@@ -60,7 +60,7 @@ def publish_Sensor_Values_to_MQTT():
         #... iden to humidity bloc
         toggle = 0
 # MQTT Settings
-MQTT_Broker = "iot.eclipse.org"
+MQTT_Broker = "mqtt.eclipse.org"
 MQTT_Port = 1883
 Keep_Alive_Interval = 30
 MQTT_Topic_Humidity = "Home/BedRoom/DHT1/Humidity"
