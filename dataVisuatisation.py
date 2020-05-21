@@ -11,3 +11,42 @@ del dbobj
 
 #preparing data for visialisation 
 
+
+def map_function_temperature(temperature_data):
+    return [temperature_data[4] , temperature_data[3]]
+
+def map_function_Humidity(humidity_data):
+    return [humidity_data[4] , humidity_data[3]]
+def map_function_Accelerator(accelerator_data):
+    return [accelerator_data[3] , accelerator_data[4],accelerator_data[4]]
+
+
+def reduce_function_temperature():
+    data_temperature = list(map(map_function_temperature, data_temperator))
+    disc_temp = dict()
+    for element in data_temperature :
+        if element[0] not in disc_temp :
+            disc_temp[element[0]] = element[1]
+        else: 
+            disc_temp[element[0]] += element[1]
+    return disc_temp
+
+
+
+def reduce_function_humidity():
+    data_humidityy = list(map(map_function_Humidity, data_humidity))
+    disc_h = dict()
+    for element in data_humidityy :
+        if element[0] not in disc_h :
+            disc_h[element[0]] = element[1]
+        else: 
+            disc_h[element[0]] += element[1]
+    return disc_h
+data_acceleration = list(map(map_function_Accelerator, data_acceleration))
+
+
+
+#graph manipulation
+print(reduce_function_temperature())
+print(reduce_function_humidity())
+print(data_acceleration)
