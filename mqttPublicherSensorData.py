@@ -56,7 +56,7 @@ def publish_Sensor_Values_to_MQTT():
     #set timer
     threading.Timer(2.0, publish_Sensor_Values_to_MQTT).start()
     global toggle
-    toggle = 2
+    toggle = 0
     if toggle == 0:
         #humidity
         Humidity_Value = float("{0:.2f}".format(random.uniform(10, 100)*getRandomNumber()))
