@@ -54,7 +54,7 @@ mqttc.on_connect = on_connect
 mqttc.on_disconnect = on_disconnect
 mqttc.on_publish = on_publish
 mqttc.connect(MQTT_Broker, int(MQTT_Port), int(Keep_Alive_Interval))
-host = '192.168.1.12'
+host = '192.168.1.10'
 port = 5555
 s=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
@@ -80,9 +80,5 @@ with keyboard.Listener(on_press = onPress) as listener:
         except:
             traceback.print_exc()
     listener.join()
-for x,y in dic.items():
-    print(x)
-    print('')
-    print(y)
-    print('\n')
+
 #python mqttPublicherSensorDataAccelerator.py
